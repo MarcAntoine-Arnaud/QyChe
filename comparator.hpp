@@ -47,6 +47,13 @@ public:
 		{
 			e = getElement( s, e );
 			e->check();
+			
+			if( e->getStatus() == eStatusInvalidButOptional )
+			{
+				std::cout << "go back in raw file" << std::endl;
+				continue;
+			}
+			
 			report.addElement( e );
 			
 			if( e->getIndex() > 20 )

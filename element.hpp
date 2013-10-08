@@ -46,6 +46,10 @@ public:
 		if( status == eStatusNotCheck )
 			return specNode;
 		
+		if( specNode->isOptional() &&
+			status == eStatusInvalid )
+			return specNode->next( parent );
+		
 		if( specNode->isGroup() && ! checkedGroup )
 		{
 			checkedGroup = true;
@@ -81,6 +85,7 @@ public:
 		{
 			case eStatusValid       : return "valid";
 			case eStatusInvalid     : return "invalid";
+			case eStatusInvalidButOptional : return "invalid but optional";
 			case eStatusPassOverData: return "pass over data";
 			case eStatusSkip        : return "skip";
 		}

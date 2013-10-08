@@ -62,6 +62,13 @@ public:
 		return true;
 	}
 	
+	bool isOptional() const
+	{
+		if( index == 7 )
+			return true;
+		return false;
+	}
+	
 	SpecNode* firstChild( Element* e ) const
 	{
 		SpecNode* s = new SpecNode( e );

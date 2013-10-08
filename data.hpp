@@ -15,6 +15,13 @@ public:
 	void check()
 	{
 		std::cout << index << "  check data" << std::endl;
+		
+		if( index == 7 )
+		{
+			status = eStatusInvalidButOptional;
+			return;
+		}
+		
 		status = eStatusValid;
 	}
 };

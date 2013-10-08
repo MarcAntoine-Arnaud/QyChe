@@ -12,6 +12,7 @@ enum EStatus
 	eStatusNotCheck = 0,
 	eStatusValid,
 	eStatusInvalid,
+	eStatusInvalidButOptional,
 	eStatusPassOverData,
 	eStatusSkip
 };
