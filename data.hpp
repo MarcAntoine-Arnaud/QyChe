@@ -22,6 +22,12 @@ public:
 			return;
 		}
 		
+		if( index == 16 )
+		{
+			status = eStatusInvalidButSkip;
+			return;
+		}
+		
 		status = eStatusValid;
 	}
 };

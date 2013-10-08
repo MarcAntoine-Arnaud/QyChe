@@ -13,6 +13,8 @@ enum EStatus
 	eStatusValid,
 	eStatusInvalid,
 	eStatusInvalidButOptional,
+	eStatusInvalidForUnordered,
+	eStatusInvalidButSkip,
 	eStatusPassOverData,
 	eStatusSkip
 };

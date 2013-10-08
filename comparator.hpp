@@ -48,7 +48,8 @@ public:
 			e = getElement( s, e );
 			e->check();
 			
-			if( e->getStatus() == eStatusInvalidButOptional )
+			if( e->getStatus() == eStatusInvalidButOptional ||
+				e->getStatus() == eStatusInvalidButSkip )
 			{
 				std::cout << "go back in raw file" << std::endl;
 				continue;

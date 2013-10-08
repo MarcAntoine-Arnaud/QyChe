@@ -3,6 +3,8 @@
 
 #include "common.hpp"
 
+#include <set>
+
 class Element;
 
 class SpecNode
@@ -19,7 +21,7 @@ public:
 		if( index == 8 ||
 			index == 10 ||
 			index == 12 ||
-			index == 15 ||
+			index == 17 ||
 			index == 18 )
 			return NULL;
 		
@@ -39,7 +41,8 @@ public:
 	bool isGroup() const
 	{
 		if( index == 2 ||
-			index == 5 )
+			index == 5 ||
+			index == 14 )
 			return true;
 		return false;
 	}
@@ -57,7 +60,7 @@ public:
 	
 	bool isOrdered() const
 	{
-		if( index == 5 )
+		if( index == 14 )
 			return false;
 		return true;
 	}
@@ -72,12 +75,20 @@ public:
 	SpecNode* firstChild( Element* e ) const
 	{
 		SpecNode* s = new SpecNode( e );
-		s->setId( "child !!!" );
+		s->setId( "child" );
 		s->setType( eTypeNumber );
 		return s;
 	}
 	
 	Element* getParent() const { return parent; }
+	
+	std::set< std::string > getChildNodes() const
+	{
+		std::set< std::string > list;
+		list.insert( "child" );
+		list.insert( "prout" );
+		return list;
+	}
 	
 private:
 	std::string id;
