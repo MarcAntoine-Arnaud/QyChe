@@ -7,8 +7,8 @@ class Data : public Element
 {
 	
 public:
-	Data( const SpecNode* node, const Element* previous )
-	 : Element( node, previous )
+	Data( const SpecNode* node, const std::shared_ptr< Element > previous )
+		: Element( node, previous )
 	{
 	}
 	

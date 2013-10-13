@@ -4,19 +4,21 @@
 #include "common.hpp"
 
 #include <set>
+#include <memory>
+#include <sstream>
 
 class Element;
 
 class SpecNode
 {
 public:
-	SpecNode( Element* p = NULL )
+	SpecNode( std::shared_ptr< Element > p = std::shared_ptr< Element >() )
 		: index( globalIndex++ )
 		, parent( p )
 	{
 	}
 	
-	SpecNode* next( Element* parent ) const
+	SpecNode* next( std::shared_ptr< Element > parent ) const
 	{
 		if( index == 8 ||
 			index == 10 ||
@@ -26,7 +28,9 @@ public:
 			return NULL;
 		
 		SpecNode* s = new SpecNode( parent );
-		s->setId( "next " + index );
+		std::ostringstream id;
+		id << "next " << index;
+		s->setId( id.str() );
 		s->setType( eTypeData );
 		return s;
 	}
@@ -72,15 +76,17 @@ public:
 		return false;
 	}
 	
-	SpecNode* firstChild( Element* e ) const
+	SpecNode* firstChild( std::shared_ptr< Element > e ) const
 	{
 		SpecNode* s = new SpecNode( e );
-		s->setId( "child" );
+		std::ostringstream id;
+		id << "child " << index;
+		s->setId( id.str() );
 		s->setType( eTypeNumber );
 		return s;
 	}
 	
-	Element* getParent() const { return parent; }
+	std::shared_ptr< Element > getParent() const { return parent; }
 	
 	std::set< std::string > getChildNodes() const
 	{
@@ -95,7 +101,7 @@ private:
 	size_t      index;
 	EType       type;
 	
-	Element*    parent;
+	std::shared_ptr< Element > parent;
 	
 	static size_t globalIndex;
 };

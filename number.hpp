@@ -7,8 +7,8 @@ class Number : public Element
 {
 	
 public:
-	Number( const SpecNode* node, const Element* previous )
-	 : Element( node, previous )
+	Number( const SpecNode* node, const std::shared_ptr< Element > previous )
+		: Element( node, previous )
 	{
 	}
 	

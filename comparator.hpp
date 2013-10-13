@@ -15,20 +15,20 @@ public:
 	
 private:
 	
-	Element* getElement( const SpecNode* node, const Element* previous )
+	std::shared_ptr< Element > getElement( const SpecNode* node, const std::shared_ptr< Element > previous )
 	{
 		switch( node->getType() )
 		{
 			case eTypeData:
 			{
-				Data* d = new Data( node, previous );
-				return static_cast< Element* >( d );
+				std::shared_ptr< Data > d( new Data( node, previous ) );
+				return static_cast< std::shared_ptr< Element > >( d );
 				break;
 			}
 			case eTypeNumber:
 			{
-				Number* n = new Number( node, previous );
-				return static_cast< Element* >( n );
+				std::shared_ptr< Number > n( new Number( node, previous ) );
+				return static_cast< std::shared_ptr< Element > >( n );
 				break;
 			}
 		}
@@ -38,11 +38,10 @@ private:
 public:
 	void check( Spec& spec, FileReader& reader, Report& report )
 	{
-		std::cout << "check start" << std::endl;
-		
 		const SpecNode* s = NULL;
-		Element* e = getElement( spec.getFirstNode( ), NULL );
-		
+		std::shared_ptr< Number > wElem;
+		std::shared_ptr< Element > e = getElement( spec.getFirstNode( ), wElem );
+
 		while( ( s = e->next() ) != NULL )
 		{
 			e = getElement( s, e );
@@ -60,8 +59,6 @@ public:
 			if( e->getIndex() > 20 )
 				break;
 		}
-		
-		std::cout << "check end" << std::endl;
 	}
 };
 

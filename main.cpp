@@ -12,6 +12,8 @@ int main( int argc, char** argv )
 	Report r;
 	Spec s;
 	
-	c.check( s, f, r);
+	c.check( s, f, r );
+
+	r.print();
 }
 
