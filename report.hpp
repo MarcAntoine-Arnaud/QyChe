@@ -20,7 +20,7 @@ public:
 	
 	void print( const std::shared_ptr< Element > e )
 	{
-		size_t count = 0;
+		int count = -1;
 		std::shared_ptr< Element > elem( e );
 		while( elem.use_count() != 0 )
 		{
@@ -36,9 +36,7 @@ public:
 			elem.swap( tmp );
 		}
 
-		std::cout << std::setw( 5*count ) << " " << "-------------------------------------------------" << std::endl;
-		std::cout << std::setw( 5*count ) << " " << "| " << e->getIndex() << "\t" << e->getId() << " (" << e->getStringStatus() << ") - " << e->getIteration()  << std::endl;
-		std::cout << std::setw( 5*count ) << " " << "-------------------------------------------------" << std::endl;
+		std::cout << std::setw( 5 * count ) << " " << "| " << e->getIndex() << "\t" << e->getId() << " (" << e->getStringStatus() << ") - " << e->getIteration()  << std::endl;
 	}
 
 	void print()
