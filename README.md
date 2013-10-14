@@ -1,7 +1,7 @@
 QiChe
 =====
 
-A Open Source Quality Check project.
+A Open Source Quality Check project.  
 Extract metadatas informations for various files (image, audio, video, etc.) without library dependency.
 
 Build Status
