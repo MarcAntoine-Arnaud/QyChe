@@ -32,7 +32,7 @@ private:
 				break;
 			}
 		}
-		return nullptr_t;
+		return nullptr;
 	}
 	
 public:
