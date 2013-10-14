@@ -25,15 +25,11 @@ public:
 		while( elem.use_count() != 0 )
 		{
 			count++;
-			std::weak_ptr< Element > p = elem->getParent();
 
-			std::shared_ptr< Element > tmp;
-			if( p.use_count() != 0 )
-			{
-				std::shared_ptr< Element > sTmp( p );
-				tmp.swap( sTmp );
-			}
-			elem.swap( tmp );
+			if( elem->getParent().use_count() == 0 )
+				break;
+
+			elem = elem->getParent().lock();
 		}
 
 		std::cout << std::setw( 5 * count ) << " " << "| " << e->getIndex() << "\t" << e->getId() << " (" << e->getStringStatus() << ") - " << e->getIteration()  << std::endl;

@@ -36,14 +36,10 @@ public:
 				}
 				else
 				{
-					const std::weak_ptr< Element > p( e->getParent() );
-					std::shared_ptr<Element> elem;
-					if( p.use_count() != 0 )
-					{
-						std::shared_ptr<Element> tmp( p );
-						elem.swap( tmp );
-					}
-					e.swap( elem );
+					if( e->getParent().use_count() == 0 )
+						break;
+
+					e = e->getParent().lock();
 				}
 			}
 		}
