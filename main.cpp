@@ -10,7 +10,7 @@ int main( int argc, char** argv )
 	Comparator c;
 	FileReader f;
 	Report r;
-	Spec s;
+	Spec s( "specifications/bwf.json" );
 	
 	c.check( s, f, r );
 

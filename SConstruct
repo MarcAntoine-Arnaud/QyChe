@@ -11,6 +11,7 @@ if os.environ.has_key("CXX"):
 env.Append(
                 CPPPATH = [
                         '#',
+			'#3rdParty/rapidjson/include',
                         ]
         )
 

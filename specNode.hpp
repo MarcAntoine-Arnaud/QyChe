@@ -35,10 +35,12 @@ public:
 		return s;
 	}
 	
-	void setId( const std::string& i ){ id = i;   }
-	void setType( const EType& t )    { type = t; }
+	void setId   ( const std::string& i ){ id = i;    }
+	void setLabel( const std::string& l ){ label = l; }
+	void setType ( const EType& t )      { type = t;  }
 	
 	std::string getId( )    const { return id; }
+	std::string getLabel( ) const { return label; }
 	size_t      getIndex( ) const { return index; }
 	EType       getType( )  const { return type; }
 	
@@ -98,6 +100,7 @@ public:
 	
 private:
 	std::string id;
+	std::string label;
 	size_t      index;
 	EType       type;
 	

@@ -15,6 +15,7 @@ class Element
 public:
 	Element( const SpecNode* node, const std::shared_ptr< Element > prev )
 		: id           ( node->getId() )
+		, label        ( node->getLabel() )
 		, index        ( node->getIndex() )
 		, type         ( node->getType() )
 		, specNode     ( node )
@@ -113,11 +114,11 @@ public:
 
 					while( prev->getId() != p->getId() )
 					{
-						for( auto id : childIds )
+						for( auto curId : childIds )
 						{
-							if( prev->getId() == id )
+							if( prev->getId() == curId )
 							{
-								childIds.erase( id );
+								childIds.erase( curId );
 							}
 						}
 						std::shared_ptr<Element> p( prev->previous );
@@ -138,6 +139,7 @@ public:
 	}
 	
 	std::string getId()         const { return id; }
+	std::string getLabel()      const { return label; }
 	size_t      getIndex()      const { return index; }
 	EType       getType()       const { return type; }
 	size_t      getIteration()  const { return iteration; }
@@ -162,6 +164,7 @@ public:
 	
 private:
 	std::string id;
+	std::string label;
 	char*       data;
 	EType       type;
 	
