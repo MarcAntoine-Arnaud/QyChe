@@ -8,6 +8,7 @@
 
 #include <fstream>
 #include <vector>
+#include <unordered_map>
 
 class Spec
 {
@@ -51,6 +52,48 @@ public:
 		s->setLabel( d["header"][0u]["label"].GetString() );
 		s->setType( eTypeNumber );
 		return s;
+	}
+
+protected:
+
+	EType getType( const std::string& subTypeString )
+	{
+		switch( getSubType( subTypeString ) )
+		{
+			case eTypeRaw:
+			case eTypeAscii:
+			case eTypeHexa:
+				return eTypeData;
+			case eTypeUInt8:
+			case eTypeInt8:
+			case eTypeUInt16:
+			case eTypeInt16:
+			case eTypeUInt32:
+			case eTypeInt32:
+			case eTypeHalf:
+			case eTypeFloat:
+			case eTypeDouble:
+				return eTypeNumber;
+		}
+	}
+
+	ESubType getSubType( const std::string& subTypeString )
+	{
+		std::unordered_map< std::string, ESubType > map;
+		map[ kTypeRaw    ] = eTypeRaw;
+		map[ kTypeAscii  ] = eTypeAscii;
+		map[ kTypeHexa   ] = eTypeHexa;
+		map[ kTypeUInt8  ] = eTypeUInt8;
+		map[ kTypeInt8   ] = eTypeInt8;
+		map[ kTypeUInt16 ] = eTypeUInt16;
+		map[ kTypeInt16  ] = eTypeInt16;
+		map[ kTypeUInt32 ] = eTypeUInt32;
+		map[ kTypeInt32  ] = eTypeInt32;
+		map[ kTypeHalf   ] = eTypeHalf;
+		map[ kTypeFloat  ] = eTypeFloat;
+		map[ kTypeDouble ] = eTypeDouble;
+
+		return map[ subTypeString ];
 	}
 
 private:
