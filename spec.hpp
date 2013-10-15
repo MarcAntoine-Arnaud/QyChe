@@ -50,7 +50,7 @@ public:
 
 		s->setId( d["header"][0u]["id"].GetString() );
 		s->setLabel( d["header"][0u]["label"].GetString() );
-		s->setType( eTypeNumber );
+		s->setType( getType( d["header"][0u]["type"].GetString() ) );
 		return s;
 	}
 
