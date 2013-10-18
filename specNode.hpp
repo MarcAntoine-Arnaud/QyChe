@@ -35,9 +35,11 @@ public:
 		return s;
 	}
 	
-	void setId   ( const std::string& i ){ id = i;    }
-	void setLabel( const std::string& l ){ label = l; }
-	void setType ( const EType& t )      { type = t;  }
+	void setId       ( const std::string& i ){ id = i;    }
+	void setLabel    ( const std::string& l ){ label = l; }
+	void setType     ( const EType& t )      { type = t;  }
+	void setOrdered  ( const bool o )        { ordered = o; }
+	void setHasGroup ( const bool g )        { hasGroup = g; }
 	
 	std::string getId( )    const { return id; }
 	std::string getLabel( ) const { return label; }
@@ -103,6 +105,9 @@ private:
 	std::string label;
 	size_t      index;
 	EType       type;
+	
+	bool        ordered;
+	bool        hasGroup;
 	
 	std::shared_ptr< Element > parent;
 	

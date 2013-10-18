@@ -43,17 +43,21 @@ public:
 	
 	SpecNode* getFirstNode( )
 	{
-		SpecNode* s = new SpecNode();
-
-		assert( d["header"].IsArray() );
-		assert( d["header"].Size() > 0 );
-
-		s->setId( d["header"][0u]["id"].GetString() );
-		s->setLabel( d["header"][0u]["label"].GetString() );
-		s->setType( getType( d["header"][0u]["type"].GetString() ) );
-		return s;
+		return loadFromJson( d["header"][0u] );
 	}
 
+	SpecNode* loadFromJson( const rapidjson::Value& ref )
+	{
+		SpecNode* s = new SpecNode();
+		s->setId( ref[ "id" ].GetString() );
+		s->setLabel( ref[ "label" ].GetString() );
+		s->setType( getType( ref[ "type" ].GetString() ) );
+		
+		s->setOrdered( ref.HasMember( "ordered" ) ? ref[ "ordered" ].GetBool() : true );
+		s->setHasGroup( ref.HasMember( "group" ) ? ref[ "group" ].GetBool() : false );
+		return s;
+	}
+	
 protected:
 
 	EType getType( const std::string& subTypeString )
