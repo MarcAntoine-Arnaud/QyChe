@@ -32,7 +32,7 @@ public:
 			elem = elem->getParent().lock();
 		}
 
-		std::cout << std::setw( 5 * count ) << " " << "| " << e->getIndex() << "\t" << e->getId() << " - " << e->getLabel() << " (" << e->getStringStatus() << ") - " << e->getIteration()  << std::endl;
+		std::cout << std::setw( 5 * count ) << " " << "| " << e->index << "\t" << e->id << " - " << e->label << " (" << e->getStringStatus() << ") - " << e->iteration  << std::endl;
 	}
 
 	void print()

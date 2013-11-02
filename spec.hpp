@@ -8,7 +8,6 @@
 
 #include <fstream>
 #include <vector>
-#include <unordered_map>
 
 class Spec
 {
@@ -82,8 +81,8 @@ protected:
 	}
 
 	ESubType getSubType( const std::string& subTypeString )
-    {
-        return mSubType[ subTypeString ];
+	{
+		return mSubType[ subTypeString ];
 	}
 
 private:

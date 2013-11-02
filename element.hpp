@@ -30,9 +30,9 @@ public:
 			std::shared_ptr<Element> e( prev );
 			while( e.use_count() != 0 )
 			{
-				if( e->getId() == node->getId() )
+				if( e->id == node->getId() )
 				{
-					iteration = e->getIteration() + 1;
+					iteration = e->iteration + 1;
 					break;
 				}
 				else
@@ -112,11 +112,11 @@ public:
 					std::shared_ptr<Element> tmp( previous );
 					prev.swap( tmp );
 
-					while( prev->getId() != p->getId() )
+                    while( prev->id != p->id )
 					{
 						for( auto curId : childIds )
 						{
-							if( prev->getId() == curId )
+                            if( prev->id == curId )
 							{
 								childIds.erase( curId );
 							}
@@ -137,13 +137,7 @@ public:
 
 		return sn;
 	}
-	
-	std::string getId()         const { return id; }
-	std::string getLabel()      const { return label; }
-	size_t      getIndex()      const { return index; }
-	EType       getType()       const { return type; }
-	size_t      getIteration()  const { return iteration; }
-	
+		
 	std::string getStringStatus() const
 	{
 		switch( status )
@@ -162,23 +156,22 @@ public:
 	
 	const std::weak_ptr< Element > getParent() const { return parent; }
 	
-private:
-	std::string id;
-	std::string label;
-	char*       data;
-	EType       type;
+public:
+	const std::string id;
+	const std::string label;
+	char*             data;
+	const EType       type;
 	
-	bool        checkedGroup;
+	bool              checkedGroup;
+
+	const size_t      index;
+	size_t            iteration;
+	EStatus           status;
 	
-protected:
-	size_t      index;
-	size_t      iteration;
-	EStatus     status;
-	
-	const SpecNode* specNode;
+	const SpecNode*                specNode;
 	const std::weak_ptr< Element > parent;
 	const std::weak_ptr< Element > previous;
-	std::vector<Element*> children;
+	std::vector<Element*>          children;
 };
 
 #endif

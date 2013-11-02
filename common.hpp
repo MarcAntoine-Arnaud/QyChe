@@ -38,19 +38,20 @@ enum ESubType
 	eTypeDouble
 };
 
-static std::map< std::string, ESubType > mSubType;
-mSubType[ kTypeRaw    ] = eTypeRaw;
-mSubType[ kTypeAscii  ] = eTypeAscii;
-mSubType[ kTypeHexa   ] = eTypeHexa;
-mSubType[ kTypeUInt8  ] = eTypeUInt8;
-mSubType[ kTypeInt8   ] = eTypeInt8;
-mSubType[ kTypeUInt16 ] = eTypeUInt16;
-mSubType[ kTypeInt16  ] = eTypeInt16;
-mSubType[ kTypeUInt32 ] = eTypeUInt32;
-mSubType[ kTypeInt32  ] = eTypeInt32;
-mSubType[ kTypeHalf   ] = eTypeHalf;
-mSubType[ kTypeFloat  ] = eTypeFloat;
-mSubType[ kTypeDouble ] = eTypeDouble;
+static std::map< std::string, ESubType > mSubType {
+	{ kTypeRaw,    eTypeRaw    },
+	{ kTypeAscii,  eTypeAscii  },
+	{ kTypeHexa,   eTypeHexa   },
+	{ kTypeUInt8,  eTypeUInt8  },
+	{ kTypeInt8,   eTypeInt8   },
+	{ kTypeUInt16, eTypeUInt16 },
+	{ kTypeInt16,  eTypeInt16  },
+	{ kTypeUInt32, eTypeUInt32 },
+	{ kTypeInt32,  eTypeInt32  },
+	{ kTypeHalf,   eTypeHalf   },
+	{ kTypeFloat,  eTypeFloat  },
+	{ kTypeDouble, eTypeDouble }
+};
 
 enum EStatus
 {

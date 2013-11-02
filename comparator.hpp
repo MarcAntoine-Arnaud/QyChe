@@ -56,7 +56,7 @@ public:
 			
 			report.addElement( e );
 			
-			if( e->getIndex() > 20 )
+			if( e->index > 20 )
 				break;
 		}
 	}
