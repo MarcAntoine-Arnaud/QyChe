@@ -51,7 +51,6 @@ public:
 		s->setId( ref[ "id" ].GetString() );
 		s->setLabel( ref[ "label" ].GetString() );
 		s->setType( getType( ref[ "type" ].GetString() ) );
-		
 		s->setOrdered( ref.HasMember( "ordered" ) ? ref[ "ordered" ].GetBool() : true );
 		s->setHasGroup( ref.HasMember( "group" ) ? ref[ "group" ].GetBool() : false );
 		return s;
