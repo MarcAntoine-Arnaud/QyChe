@@ -82,22 +82,8 @@ protected:
 	}
 
 	ESubType getSubType( const std::string& subTypeString )
-	{
-		std::unordered_map< std::string, ESubType > map;
-		map[ kTypeRaw    ] = eTypeRaw;
-		map[ kTypeAscii  ] = eTypeAscii;
-		map[ kTypeHexa   ] = eTypeHexa;
-		map[ kTypeUInt8  ] = eTypeUInt8;
-		map[ kTypeInt8   ] = eTypeInt8;
-		map[ kTypeUInt16 ] = eTypeUInt16;
-		map[ kTypeInt16  ] = eTypeInt16;
-		map[ kTypeUInt32 ] = eTypeUInt32;
-		map[ kTypeInt32  ] = eTypeInt32;
-		map[ kTypeHalf   ] = eTypeHalf;
-		map[ kTypeFloat  ] = eTypeFloat;
-		map[ kTypeDouble ] = eTypeDouble;
-
-		return map[ subTypeString ];
+    {
+        return mSubType[ subTypeString ];
 	}
 
 private:

@@ -1,6 +1,8 @@
 #ifndef _QICHE_COMMON_HPP_
 #define _QICHE_COMMON_HPP_
 
+#include <map>
+
 enum EType
 {
 	eTypeData = 0,
@@ -35,6 +37,20 @@ enum ESubType
 	eTypeFloat,
 	eTypeDouble
 };
+
+static std::map< std::string, ESubType > mSubType;
+mSubType[ kTypeRaw    ] = eTypeRaw;
+mSubType[ kTypeAscii  ] = eTypeAscii;
+mSubType[ kTypeHexa   ] = eTypeHexa;
+mSubType[ kTypeUInt8  ] = eTypeUInt8;
+mSubType[ kTypeInt8   ] = eTypeInt8;
+mSubType[ kTypeUInt16 ] = eTypeUInt16;
+mSubType[ kTypeInt16  ] = eTypeInt16;
+mSubType[ kTypeUInt32 ] = eTypeUInt32;
+mSubType[ kTypeInt32  ] = eTypeInt32;
+mSubType[ kTypeHalf   ] = eTypeHalf;
+mSubType[ kTypeFloat  ] = eTypeFloat;
+mSubType[ kTypeDouble ] = eTypeDouble;
 
 enum EStatus
 {
